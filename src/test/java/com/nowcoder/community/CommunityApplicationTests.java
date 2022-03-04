@@ -8,10 +8,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.test.context.ContextConfiguration;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 @SpringBootTest
 @ContextConfiguration(classes = CommunityApplication.class)
 class CommunityApplicationTests implements ApplicationContextAware {
