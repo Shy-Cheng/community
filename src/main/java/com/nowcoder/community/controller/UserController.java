@@ -113,4 +113,28 @@ public class UserController {
             logger.error("读取图像失败" + e.getMessage());
         }
     }
+
+    @LoginRequired
+    @RequestMapping(path = "/updatePassword", method = RequestMethod.POST)
+    public String updatePassword(String password, String newPassword, String confirmPassword, Model model) {
+
+        // 首先验证原密码
+        User user = hostHolder.getUser();
+        if (StringUtils.isBlank(password) || !user.getPassword().equals(CommunityUtil.md5(password + user.getSalt()))) {
+            model.addAttribute("passwordMsg", "密码不正确");
+            return "/site/setting";
+        }
+
+        // 修改密码
+        if (newPassword.equals(confirmPassword)) {
+            newPassword = CommunityUtil.md5(newPassword + user.getSalt());
+            userService.updatePassword(user.getId(), newPassword);
+        } else {
+            model.addAttribute("confirmPasswordMsg", "两次输入的密码不一致!");
+            return "/site/setting";
+        }
+
+        return "redirect:/index";
+
+    }
 }
