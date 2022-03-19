@@ -18,6 +18,9 @@ import org.springframework.data.elasticsearch.core.query.NativeSearchQuery;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.test.context.ContextConfiguration;
 
+import java.util.List;
+import java.util.Map;
+
 @SpringBootTest
 @ContextConfiguration(classes = CommunityApplication.class)
 public class ElasticsearchTests {
@@ -79,13 +82,14 @@ public class ElasticsearchTests {
 
         // 底层获取得到了高亮显示的值，但是没有返回
         SearchHits<DiscussPost> hits = elasticsearchRestTemplate.search(searchQuery, DiscussPost.class);
+        System.out.println(hits.getTotalHits());
         for (SearchHit<DiscussPost> hit : hits.getSearchHits()) {
             DiscussPost post = hit.getContent();
             for (String t : hit.getHighlightField("title")) {
                 post.setTitle(t);
             }
             for (String c : hit.getHighlightField("content")) {
-                post.setTitle(c);
+                post.setContent(c);
             }
             System.out.println(post);
         }
