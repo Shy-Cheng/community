@@ -12,8 +12,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
 
-    @Autowired
-    private TestInterceptor testInterceptor;
+//    @Autowired
+//    private TestInterceptor testInterceptor;
 
     @Autowired
     private LoginTicketInterceptor loginTicketInterceptor;
@@ -26,9 +26,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(testInterceptor)
-                .excludePathPatterns("/**/*.css", "/**/*.css", "/**/*.png", "/**/*.jpg", "/**/*.jpeg")
-                .addPathPatterns("/register", "/login");
+//        registry.addInterceptor(testInterceptor)
+//                .excludePathPatterns("/**/*.css", "/**/*.css", "/**/*.png", "/**/*.jpg", "/**/*.jpeg")
+//                .addPathPatterns("/register", "/login");
 
         registry.addInterceptor(loginTicketInterceptor)
                 .excludePathPatterns("/**/*.css", "/**/*.css", "/**/*.png", "/**/*.jpg", "/**/*.jpeg");

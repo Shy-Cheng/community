@@ -138,4 +138,9 @@ public class MapperTest {
         int unreadCount = messageMapper.selectLetterUnreadCount(131, "111_131");
         System.out.println(unreadCount);
     }
+
+    @Test
+    public void updatePost() {
+        discussPostMapper.updateType(289, 1);
+    }
 }
