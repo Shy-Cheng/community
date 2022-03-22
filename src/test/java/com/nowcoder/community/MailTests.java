@@ -8,6 +8,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
+import java.util.LinkedList;
+
 @SpringBootTest
 @ContextConfiguration(classes = CommunityApplication.class)
 public class MailTests {
@@ -32,4 +34,5 @@ public class MailTests {
         System.out.println(content);
         mailClient.sendMail("1348656979@qq.com", "html测试", content);
     }
+
 }
