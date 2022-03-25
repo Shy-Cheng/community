@@ -25,4 +25,5 @@ public class WkConfig {
             logger.info("创建wk图片目录：" + wkImageStorage);
         }
     }
+
 }
