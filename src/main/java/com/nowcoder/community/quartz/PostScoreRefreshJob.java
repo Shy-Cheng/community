@@ -51,7 +51,7 @@ public class PostScoreRefreshJob implements Job, CommunityConstant {
         String redisKey = RedisKeyUtil.getPostScoreKey();
         BoundSetOperations operations = redisTemplate.boundSetOps(redisKey);
         if (operations.size() == 0) {
-            logger.info("[任务取消] 没有需要刷新的帖子");
+            logger.info("[计算热帖排行任务取消] 没有需要刷新的帖子");
             return;
         }
         logger.info("[任务开始] 正在刷新帖子分数：" + operations.size());
